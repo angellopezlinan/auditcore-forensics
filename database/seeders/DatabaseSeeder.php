@@ -18,50 +18,26 @@ class DatabaseSeeder extends Seeder
     // 0. Set up roles and permissions
     $this->call(RolesAndPermissionsSeeder::class);
 
-    // 1. Creamos un Equipo (Entidad/Jefatura)
-    $teamCordoba = \App\Models\Team::create([
-        'name' => 'Policía Local de Córdoba (UAS Unit)',
+    // 1. Creamos un Equipo (Entidad Central)
+    $team = \App\Models\Team::create([
+        'name' => 'AuditCore Forensics - División Central',
     ]);
 
-    // 2. Le asignamos un par de drones a este equipo específico
-    $teamCordoba->drones()->create([
-        'model' => 'Matrice 30T',
-        'brand' => 'DJI',
-        'serial_number' => '158CF4567890',
-        'weight_grams' => 3770, // Peso en gramos
-        'class_mark' => 'C2'
-    ]);
+    $this->command->info('¡Entidad inicial creada con éxito!');
 
-    $teamCordoba->drones()->create([
-        'model' => 'Mavic 3 Enterprise',
-        'brand' => 'DJI',
-        'serial_number' => '158DG1234567',
-        'weight_grams' => 915,
-        'class_mark' => 'C1'
-    ]);
-
-    $this->command->info('¡Hangar completado! Equipo y Drones creados con éxito.');
-
-    // 3. Crear usuario Jefe de Policía y asignarle el Rol de representante o jefe
+    // 2. Crear usuario SuperAdmin
     $user = \App\Models\User::create([
-        'name' => 'Jefe Policia',
-        'email' => 'jefe@cordoba.es',
-        'password' => bcrypt('123456'),
+        'name' => 'Admin AuditCore',
+        'email' => 'admin@auditcore.app',
+        'password' => bcrypt('password123'),
     ]);
 
-    $user->teams()->attach($teamCordoba);
+    $user->teams()->attach($team);
     
     // Set Spatie Team ID so the role pivot captures it
-    setPermissionsTeamId($teamCordoba->id);
-    $user->assignRole('representante-operador');
+    setPermissionsTeamId($team->id);
+    $user->assignRole('super-admin');
     
-    // 4. Crear un Piloto básico para pruebas
-    $pilotUser = \App\Models\User::create([
-        'name' => 'Agente Piloto 01',
-        'email' => 'piloto1@cordoba.es',
-        'password' => bcrypt('123456'),
-    ]);
-    $pilotUser->teams()->attach($teamCordoba);
-    $pilotUser->assignRole('piloto');
+    $this->command->info('¡Admin configurado en la División Central!');
 }
 }

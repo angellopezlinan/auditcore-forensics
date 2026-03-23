@@ -17,7 +17,6 @@
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.10.1",
         "shuvroroy/filament-spatie-laravel-backup": "^2.2",
-        "smalot/pdfparser": "^2.12",
         "spatie/laravel-activitylog": "^4.12",
         "spatie/laravel-backup": "^9.4",
         "spatie/laravel-permission": "^6.0",
@@ -26,7 +25,6 @@
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
-        "knuckleswtf/scribe": "^5.8",
         "larastan/larastan": "^3.9",
         "laravel/pail": "^1.2.2",
         "laravel/pint": "^1.24",
