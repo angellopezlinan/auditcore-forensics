@@ -42,6 +42,6 @@ class RolesAndPermissionsSeeder extends Seeder
         ])->where('guard_name', $guard)->get());
 
         // Rol: Super Admin Global (AuditCore)
-        $roleSuperAdmin = Role::create(['name' => 'super-admin', 'guard_name' => $guard]);
+        $roleSuperAdmin = Role::create(['name' => 'super_admin', 'guard_name' => $guard]);
     }
 }

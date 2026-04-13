@@ -3,6 +3,7 @@
 .env
 .env.backup
 .env.production
+.env.*
 .phpactor.json
 .phpunit.result.cache
 /.fleet
@@ -22,3 +23,11 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
+
+# Security & Secrets
+*TOKEN*
+*KEY*
+*SECRET*
+*.key
+auth.json
+.env.*

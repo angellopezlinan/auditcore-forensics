@@ -26,6 +26,14 @@ La plataforma está diseñada bajo principios de **Security by Design**:
 - **Auditoría Forense:** Registro total de actividades del sistema (`Caja Negra`) para cumplimiento normativo.
 - **Bloqueo Inteligente:** Protección activa contra ataques de fuerza bruta y desvío de credenciales.
 
+## 🕵️‍♂️ Centro de Inteligencia Forense (Intelligence Center)
+AuditCore incorpora un centro de mando avanzado para investigadores financieros:
+- **Detección de Duplicados:** Algoritmo propietario que cruza identificadores, proveedores e importes para prevenir pagos dobles.
+- **Análisis de Ley de Benford:** Visualización estadística de la frecuencia del primer dígito para detectar manipulación de datos.
+- **Monitor de Fines de Semana:** Alertas inteligentes para facturas emitidas en días no comerciales.
+- **Ranking de Riesgo (Muro de la Vergüenza):** Dashboards de proveedores con mayores ratios de fraude confirmado.
+- **Gestión Forense:** Páginas dedicadas con tablas de alta densidad y resolución de incidencias en cadena.
+
 ## 🛠️ Instalación y Despliegue Local (Laravel Sail)
 
 Para comenzar el desarrollo en un entorno local controlado:

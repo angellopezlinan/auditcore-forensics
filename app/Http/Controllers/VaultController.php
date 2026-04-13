@@ -21,13 +21,12 @@ class VaultController extends Controller
     {
         $this->authorize('view', $invoice);
 
-        $path = $invoice->pdf_vault_path;
+        $path = $invoice->file_path;
 
-        if (!$path || !Storage::disk('local')->exists($path)) {
+        if (!$path || !Storage::disk('private')->exists($path)) {
             abort(404, 'El archivo solicitado no se encuentra en la bóveda privada.');
         }
 
-        // Devolvemos el archivo usando response() para cumplir con las directivas ENS.
-        return Storage::disk('local')->response($path, "Factura_{$invoice->invoice_number}.pdf");
+        return Storage::disk('private')->download($path, "Factura_{$invoice->invoice_number}.pdf");
     }
 }
