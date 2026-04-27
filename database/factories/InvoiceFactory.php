@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Team;
+use App\Models\Vendor;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,8 +19,10 @@ class InvoiceFactory extends Factory
     public function definition(): array
     {
         return [
-            'team_id' => 1,
-            'vendor_id' => \App\Models\Vendor::factory(),
+            'team_id' => Team::factory(),
+            'vendor_id' => fn (array $attributes) => Vendor::factory()->create([
+                'team_id' => $attributes['team_id'],
+            ])->getKey(),
             'invoice_number' => $this->faker->regexify('INV-[0-9]{5}'),
             'issue_date' => $this->faker->dateTimeBetween('-1 year', 'now'),
             'total_amount' => $this->faker->randomFloat(2, 100, 5000),

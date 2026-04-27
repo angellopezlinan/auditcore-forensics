@@ -80,7 +80,7 @@ class User extends Authenticatable implements \Filament\Models\Contracts\HasTena
 
     public function canAccessTenant(\Illuminate\Database\Eloquent\Model $tenant): bool
     {
-        return true; // Bypass temporal para recuperar acceso
+        return $this->teams()->whereKey($tenant->getKey())->exists();
     }
 
     public function canAccessPanel(\Filament\Panel $panel): bool
